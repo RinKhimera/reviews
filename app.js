@@ -2,9 +2,9 @@
 const reviews = [
   {
     id: 1,
-    name: "Susan Smith",
+    name: "Ngounou Celine",
     job: "Web Developer",
-    img: "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
+    img: "./oka.jpg",
     text: "I'm baby meggings twee health goth +1. Bicycle rights tumeric chartreuse before they sold out chambray pop-up. Shaman humblebrag pickled coloring book salvia hoodie, cold-pressed four dollar toast everyday carry",
   },
   {
@@ -42,11 +42,11 @@ const randomBtn = document.querySelector(".random-btn");
 let currentItem = 0;
 
 window.addEventListener("DOMContentLoaded", () => {
-  showPerson(currentItem);
+  showPerson();
 });
 
-function showPerson(person) {
-  const item = reviews[person];
+function showPerson() {
+  const item = reviews[currentItem];
   img.src = item.img;
   job.textContent = item.job;
   author.textContent = item.name;
@@ -58,7 +58,7 @@ nextBtn.addEventListener("click", () => {
   if (currentItem > reviews.length - 1) {
     currentItem = 0;
   }
-  showPerson(currentItem);
+  showPerson();
 });
 
 prevBtn.addEventListener("click", () => {
@@ -66,5 +66,11 @@ prevBtn.addEventListener("click", () => {
   if (currentItem < 0) {
     currentItem = reviews.length - 1;
   }
-  showPerson(currentItem);
+  showPerson();
+});
+
+randomBtn.addEventListener("click", () => {
+  currentItem = Math.floor(Math.random() * reviews.length);
+  console.log(currentItem);
+  showPerson();
 });
